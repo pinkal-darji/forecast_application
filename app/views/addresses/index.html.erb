@@ -1,0 +1,13 @@
+<h1>My Addresses</h1>
+
+<table>
+	<% @addresses.each do |address| %>
+		<tr style="border-color: black;">
+			<td>
+				<%= address.full_address %> <%= address.is_primary? ? "(Primary Address)" : "" %><%= link_to "Click Here to see weather forecast", fore_casts_path(address_id: address.id) %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+
+<%= button_to "Add Address", new_address_path, method: :get %>

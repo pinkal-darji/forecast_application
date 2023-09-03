@@ -1,0 +1,35 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: forecast_dev
+  username: postgres
+  password: postgres
+  host: localhost
+
+test: &test
+  adapter: postgresql
+  encoding: unicode
+  pool: 5t
+  database: forecase_test
+  username: postgres
+  password: postgres
+  host: localhost
+
+staging:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: postgres
+  database: forecase_staging
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: postgres
+  database: forecase_prod
+  host: localhost

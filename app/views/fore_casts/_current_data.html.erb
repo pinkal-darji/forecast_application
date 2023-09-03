@@ -1,0 +1,19 @@
+<% if @address.present? %>
+  <h2><%= @address.full_address %></h2></br>
+  <% if @is_cached %><img src="/cached.png" alt="Image Description" height="45px" width="45px" title="Downloaded data"><% end %>
+  <div class="forecast"><h3><%= @forecast["current"]["temperature"] %> °C</h3>(Feels Like <%= @forecast["current"]["feelslike"] %>°C)</div>
+  <div class="forecast"><h3>Weather:</h3><%= @forecast["current"]["weather_descriptions"].join(",") %>
+  <img src="<%= @forecast["current"]["weather_icons"].last %>" height="30px"></div>
+  <div class="forecast"><h3>Humidity</h3>: <%= @forecast["current"]["humidity"] %></div>
+  <div class="forecast"><h3>Wind</h3>: <%= @forecast["current"]["wind_speed"] %></div>
+  <!-- Fetch UV index value -->
+  <div class="forecast"><h3>UV index</h3>: <%= fetch_uv_index_value(@forecast["current"]["uv_index"]) %></div>
+  <% if @forecast["astro"].present? %>
+    <div class="forecast"><h3>Sunrise</h3>:<%= fetch_uv_index_value(@forecast["astro"]["sunrise"]) %></div>
+    <div class="forecast"><h3>Sunset</h3>: <%= fetch_uv_index_value(@forecast["astro"]["sunset"]) %></div>
+    <div class="forecast"><h3>Moonrise</h3>: <%= fetch_uv_index_value(@forecast["astro"]["moonrise"]) %></div>
+  <% end %>
+  <%= button_to "Manage addresses", addresses_path, method: :get %>
+<% else %>
+  <%= button_to "Add new", new_address_path, method: :get %> 
+<% end %>

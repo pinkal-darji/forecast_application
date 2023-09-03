@@ -1,0 +1,37 @@
+<!-- app/views/addresses/new.html.erb -->
+
+<h1>Add a New Address</h1>
+
+<%= form_with model: @address, url: addresses_path, method: :post do |form| %>
+  <div class="field">
+    <%= form.label :address_line %>
+    <%= form.text_field :address_line, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :state %>
+    <%= form.text_field :state, class: 'form-control',required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zip_code %>
+    <%= form.text_field :zip_code, class: 'form-control',required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_primary %>
+    <%= form.check_box :is_primary, class: 'form-check-input' %>
+  </div>
+
+  <%= form.submit 'Add Address', class: 'btn btn-primary' %>
+<% end %>
